@@ -1,6 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 import { Roles } from "@constants/Roles";
 import { formatComboItems, formatCurrency, getRoleName, validateDecimal, validateInt } from "./Helpers";
+
+beforeAll(() => {
+	global.HTMLCanvasElement.prototype.getContext = () => { };
+});
 
 describe('formatting', () => {
 	it('should correctly format role names', () => {
@@ -14,7 +18,7 @@ describe('formatting', () => {
 		expect(employee).toEqual(expectedEmployee);
 	});
 
-	it('should correctly format combo items with id and stringId', () => {
+	it('should correctly format combo items', () => {
 		const intList = [
 			{
 				id: 1,
@@ -30,36 +34,14 @@ describe('formatting', () => {
 			}
 		];
 
-		const stringList = [
-			{
-				stringId: '1',
-				description: 'Item 1',
-			},
-			{
-				stringId: '2',
-				description: 'Item 2',
-			},
-			{
-				stringId: '3',
-				description: 'Item 3',
-			}
-		];
-
 		const intItems = formatComboItems(intList);
-		const stringItems = formatComboItems(stringList);
 
 		const expectedInt = intList.map((item) => ({
 			value: item.id,
 			label: item.description,
 		}));
 
-		const expectedString = stringList.map((item) => ({
-			value: item.stringId,
-			label: item.description,
-		}));
-
 		expect(intItems).toEqual(expectedInt);
-		expect(stringItems).toEqual(expectedString);
 	});
 
 	it('should correctly format currencies', () => {

@@ -2,12 +2,13 @@ import { memo, useEffect, useState } from 'react';
 import { Dropdown } from '@components';
 import { API, Helpers } from '@app';
 
-const InvoiceTypesDropdown = ({
+const RolesCombo = ({
 	value = null,
 	label = null,
 	required = false,
 	disabled = false,
-	placeholder = 'Seleccione un tipo',
+	placeholder = 'Seleccione un rol',
+	isMulti = false,
 	onChange = () => { },
 }) => {
 	const [items, setItems] = useState(null);
@@ -16,13 +17,14 @@ const InvoiceTypesDropdown = ({
 	useEffect(() => {
 		if (items) return;
 
-		API.get('client/getComboInvoiceTypes').then((r) => {
-			setItems(Helpers.formatComboItems(r.data.items));
+		API.get('user/getComboRoles').then((r) => {
+			setItems(r.data.items.map(x => ({ value: x.id, label: Helpers.getRoleName(x.description) })));
 		});
 	}, [items]);
 
 	const handleChange = (options) => {
-		onChange(options.value);
+		const value = isMulti ? options : options.value;
+		onChange(value);
 	};
 
 	return (
@@ -30,22 +32,23 @@ const InvoiceTypesDropdown = ({
 			placeholder={placeholder}
 			label={label}
 			required={required}
+			isMulti={isMulti}
 			disabled={disabled}
-			items={items ?? []}
+			items={items ? items : []}
 			value={value}
 			onChange={(option) => handleChange(option)}
 		/>
 	);
 };
 
-const MemoDropdown = memo(InvoiceTypesDropdown, (prevProps, nextProps) => {
+const MemoCombo = memo(RolesCombo, (prevProps, nextProps) => {
 	return (
 		nextProps.value === prevProps.value &&
 		nextProps.label === prevProps.label &&
 		nextProps.required === prevProps.required &&
-		nextProps.disabled === prevProps.disabled &&
-		nextProps.placeholder === prevProps.placeholder
+		nextProps.placeholder === prevProps.placeholder &&
+		nextProps.isMulti === prevProps.isMulti
 	);
 });
 
-export default MemoDropdown;
+export default MemoCombo;

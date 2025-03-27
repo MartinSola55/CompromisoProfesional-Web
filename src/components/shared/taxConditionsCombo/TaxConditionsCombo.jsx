@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from 'react';
 import { Dropdown } from '@components';
 import { API, Helpers } from '@app';
 
-const TaxConditionsDropdown = ({
+const TaxConditionsCombo = ({
 	value = null,
 	label = null,
 	required = false,
@@ -38,7 +38,7 @@ const TaxConditionsDropdown = ({
 	);
 };
 
-const MemoDropdown = memo(TaxConditionsDropdown, (prevProps, nextProps) => {
+const MemoCombo = memo(TaxConditionsCombo, (prevProps, nextProps) => {
 	return (
 		nextProps.value === prevProps.value &&
 		nextProps.label === prevProps.label &&
@@ -48,4 +48,4 @@ const MemoDropdown = memo(TaxConditionsDropdown, (prevProps, nextProps) => {
 	);
 });
 
-export default MemoDropdown;
+export default MemoCombo;

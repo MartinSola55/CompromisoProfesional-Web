@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Dropdown } from '@components';
 
-const MonthDropdown = ({
+const MonthCombo = ({
 	value = null,
 	label = null,
 	required = false,
@@ -44,7 +44,7 @@ const MonthDropdown = ({
 	);
 };
 
-const MemoDropdown = memo(MonthDropdown, (prevProps, nextProps) => {
+const MemoCombo = memo(MonthCombo, (prevProps, nextProps) => {
 	return (
 		nextProps.value === prevProps.value &&
 		nextProps.label === prevProps.label &&
@@ -55,4 +55,4 @@ const MemoDropdown = memo(MonthDropdown, (prevProps, nextProps) => {
 	);
 });
 
-export default MemoDropdown;
+export default MemoCombo;

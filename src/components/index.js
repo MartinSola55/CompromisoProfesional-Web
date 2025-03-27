@@ -24,14 +24,15 @@ import ActionButtons from './shared/actionButtons/ActionButtons';
 import ActionConfirmationModal from './shared/actionConfirmationModal/ActionConfirmationModal';
 import DeleteConfirmationModal from './shared/deleteConfirmationModal/DeleteConfirmationModal';
 import TableSort from './shared/tableSort/TableSort';
-import RolesDropdown from './shared/rolesDropdown/RolesDropdown';
-import InvoiceTypesDropdown from './shared/invoiceTypesDropdown/InvoiceTypesDropdown';
-import TaxConditionsDropdown from './shared/taxConditionsDropdown/TaxConditionsDropdown';
+import EmployeesCombo from './shared/employeesCombo/EmployeesCombo';
+import RolesCombo from './shared/rolesCombo/RolesCombo';
+import InvoiceTypesCombo from './shared/invoiceTypesCombo/InvoiceTypesCombo';
+import TaxConditionsCombo from './shared/taxConditionsCombo/TaxConditionsCombo';
+import MonthCombo from './shared/monthCombo/MonthCombo';
 import CellNumericInput from './shared/cellInputs/CellNumericInput';
 import CellCheck from './shared/cellInputs/CellCheck';
 import CellButton from './shared/cellInputs/CellButton';
 import TableFilters from './shared/tableFilters/TableFilters';
-import MonthDropdown from './shared/monthDropdown/MonthDropdown';
 
 import { LineChart } from './charts/lineChart/LineChart';
 import { AreaChart } from './charts/areaChart/AreaChart';
@@ -64,14 +65,15 @@ export {
 	ActionConfirmationModal,
 	DeleteConfirmationModal,
 	TableSort,
-	RolesDropdown,
-	InvoiceTypesDropdown,
-	TaxConditionsDropdown,
+	EmployeesCombo,
+	RolesCombo,
+	InvoiceTypesCombo,
+	TaxConditionsCombo,
+	MonthCombo,
 	CellNumericInput,
 	CellCheck,
 	CellButton,
 	TableFilters,
-	MonthDropdown,
 
 	// Charts
 	LineChart,

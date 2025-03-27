@@ -3,7 +3,7 @@ import { Roles } from "@constants/Roles";
 
 export const formatComboItems = (items) => {
 	return items.map((item) => ({
-		value: item.stringId ? item.stringId : item.id,
+		value: item.id,
 		label: item.description,
 	}));
 };
